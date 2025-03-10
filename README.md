@@ -24,8 +24,8 @@ All you need to run this is a PHP capable webserver that can work with PDO sqlit
 As soon as it's being served by something capable of processing PHP and handling PD0 sqlite databases you're in business!
 When either masterserver2.php or masterserver3.php is accessed they'll automatically create a database with all of the necessary columns.
 
-## Master Server operation documentation
-To see my findings on how the master server is expected to operate check out the [Barotrauma Legacy Master Server Interaction Documentation file](Barotrauma Legacy Master Server Interaction Documentation.md) file.
+## Master Server operation and interaction documentation
+To see my findings on how the master server is expected to operate and interact with clients adn servers check out the [Barotrauma Legacy Master Server Interaction Documentation file](Barotrauma%20Legacy%20Master%20Server%20Interaction%20Documentation.md) file.
 
 It explains what I've found the master server's responibilties to be, how it should deal with them, and how this master server implementation handles them.
 
