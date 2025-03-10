@@ -46,7 +46,7 @@ function handle_database_error_messages($error_message)
 	The database also requires that server names are unique, similar to the IP and port pair.
 	This will echo which one we errored on back to the Barotrauma server/client so it'll show in the console and the user will know what went wrong.
 	https://www.php.net/manual/en/function.str-contains.php */
-	
+
 	/* echos are a 200 response code, meaning those messages will show in the Barotrauma server/client console upon error.
 	This is wrong from an HTTP standpoint but I'm doing it like this because it's a better user experience to get actual in game errors. */
 
@@ -81,11 +81,11 @@ switch ($action)
 		/* These variables are only needed on server creation.
 		trim() removes leading and trailing whitespace so you can't easily impersonate a server by using spaces to have a different name.
 		Also lets us not allow all space names as checked slightly further down. */
-		$name = trim($params['servername']); // 
+		$name = trim($params['servername']); //
 
 		/* htmlspecialchars() encodes &, ", ', <, and > to avoid XSS since these pages can easily be accessed in a web browser. If these stay encoded they show up weird in the server browser so we can't keep them like that.
 		If htmlspecialchars() encoded any of those characters it will no longer match the original name variable, and we should inform the user that they entered invalid characters. */
-		if ($name != htmlspecialchars($name)) { 
+		if ($name != htmlspecialchars($name)) {
 			// Send error message to Barotrauma console
 			echo 'Server name cannot include &, ", \', <, or >';
 			exit();
@@ -110,7 +110,7 @@ switch ($action)
 
 		// Set max_players from GET query
 		$max_players = $params['maxplayers'];
-		
+
 		// Check if max_players is actually a number, and if it is check if it's in our range
 		if (filter_var($max_players, FILTER_VALIDATE_INT, array("options" => array("min_range"=>1, "max_range"=>99))) === FALSE) {
 			// Send error message to Barotrauma console
@@ -156,10 +156,10 @@ switch ($action)
 			echo "Invalid game started state '.$game_started.' it needs to be either 0 or 1";
 			exit();
 		}
-		
+
 		// refreshserver updates gamestarted, currplayers, and maxplayers, but maxplayers can't change once the server is started so we ignore it.
 		$stmt = $db->prepare("UPDATE servers SET game_started = :game_started, current_players = :current_players, last_update_time = :last_update_time WHERE ip = :ip AND port = :port");
-		
+
 		// Execute above database query, catching any errors
 		try
 		{
