@@ -53,10 +53,10 @@ foreach ($servers as $row)
     <meta content="<?=$server_url?>" property="og:url" />
 
     <!-- Preload our stylesheet -->
-    <link rel="preload" href="style.css?v=1.0.0" as="style">
+    <link rel="preload" href="style.css?v=1.0.1" as="style">
 
     <!-- Our stylesheet -->
-    <link rel="stylesheet" href="style.css?v=1.0.0">
+    <link rel="stylesheet" href="style.css?v=1.0.1">
   </head>
 
   <body>
