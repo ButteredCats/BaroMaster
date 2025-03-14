@@ -1,16 +1,11 @@
-html {
-	height: 100%;
-}
+html { height: 100%; }
 
-/* Set the font, background and text color, font family, and text alignment for the entire page */
 body {
 	font-family: sans-serif;
 	height: 100%;
 	margin: 0;
 	background: #000;
-	/*background: radial-gradient(circle at 22%, #fdfeff 0%, #6a757e 9%, #0e1922 20%, #000 30%);*/
 	background: radial-gradient(circle at 22%, #fdfeff 0%, #6a757e 5%, #0e1922 20%, #000 100%);
-	background-repeat: no-repeat;
 	backdrop-filter: blur(15px);
 }
 
@@ -25,7 +20,7 @@ h1 {
 	h1 { font-size: 40px; }
 }
 
-.fake-button {
+div {
 	margin-left: 30px;
 	margin-bottom: 40px;
 	width: 80%;
@@ -39,15 +34,13 @@ h1 {
 	border-right: 2px solid #3a3a3a6f;
 }
 
-.fake-button p {
+div p {
 	margin: 0;
 	opacity: .9;
 }
 
 @media (max-width: 500px) {
-	.fake-button {
-		margin-left: 15px;
-	}
+	div { margin-left: 15px; }
 }
 
 a { color: #24ecff6f; }

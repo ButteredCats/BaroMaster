@@ -62,9 +62,9 @@ foreach ($servers as $row)
   <body>
     <main>
       <h1>Barotrauma Legacy Master Server</h1>
-      <div class="fake-button"><p>The master server controls the in game server list, without it you need an outside way of discovering servers to know the IP and the port to join. To use this master server replacement and discover servers through the game, edit <strong>config.xml</strong> inside of your Barotrauma Legacy folder and change the value of "masterserverurl" so that it looks like "<strong>masterserverurl=<?=$server_url?></strong>"</p></div>
-      <div class="fake-button"><p>There are currently <?=$current_servers?> online servers that contain a total of <?=$current_players?> players.</p></div>
-      <div class="fake-button"><p>This master server's source code can be found at <a href="https://github.com/ButteredCats/BaroMaster" target="_blank">https://github.com/ButteredCats/BaroMaster</a></p></div>
+      <div><p>The master server controls the in game server list, without it you need an outside way of discovering servers to know the IP and the port to join. To use this master server replacement and discover servers through the game, edit <strong>config.xml</strong> inside of your Barotrauma Legacy folder and change the value of "masterserverurl" so that it looks like "<strong>masterserverurl=<?=$server_url?></strong>"</p></div>
+      <div><p>There are currently <?=$current_servers?> online servers that contain a total of <?=$current_players?> players.</p></div>
+      <div><p>This master server's source code can be found at <a href="https://github.com/ButteredCats/BaroMaster" target="_blank">https://github.com/ButteredCats/BaroMaster</a></p></div>
     </main>
   </body>
 </html>
