@@ -21,7 +21,7 @@ I run a copy of this master server at https://baromaster.catsarch.com and plan t
 ## Running
 All you need to run this is a PHP capable webserver that can work with PDO sqlite databases. Using external databases is not supported.
 
-As soon as it's being served by something capable of processing PHP and handling PD0 sqlite databases you're in business!
+As soon as it's being served by something capable of processing PHP and handling PDO sqlite databases you're in business!
 When either masterserver2.php or masterserver3.php is accessed they'll automatically create a database with all of the necessary columns.
 
 ## Master Server operation and interaction documentation
