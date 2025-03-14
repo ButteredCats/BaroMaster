@@ -1,0 +1,53 @@
+html {
+	height: 100%;
+}
+
+/* Set the font, background and text color, font family, and text alignment for the entire page */
+body {
+	font-family: sans-serif;
+	height: 100%;
+	margin: 0;
+	background: #000;
+	/*background: radial-gradient(circle at 22%, #fdfeff 0%, #6a757e 9%, #0e1922 20%, #000 30%);*/
+	background: radial-gradient(circle at 22%, #fdfeff 0%, #6a757e 5%, #0e1922 20%, #000 100%);
+	background-repeat: no-repeat;
+	backdrop-filter: blur(15px);
+}
+
+h1 {
+	text-shadow: 0 0 4px #24ecff;
+	font-size: 60px;
+	margin-top: 0;
+	margin-left: 15px;
+}
+
+@media (max-width: 630px) {
+	h1 { font-size: 40px; }
+}
+
+.fake-button {
+	margin-left: 30px;
+	margin-bottom: 40px;
+	width: 80%;
+	word-wrap: break-word;
+	padding: 10px;
+	color: #fff;
+	background-color: #6f6f6f6f;
+	border-top: 3px solid #ababab6f;
+	border-bottom: 3px solid #3a3a3a6f;
+	border-left: 2px solid #3a3a3a6f;
+	border-right: 2px solid #3a3a3a6f;
+}
+
+.fake-button p {
+	margin: 0;
+	opacity: .9;
+}
+
+@media (max-width: 500px) {
+	.fake-button {
+		margin-left: 15px;
+	}
+}
+
+a { color: #24ecff6f; }

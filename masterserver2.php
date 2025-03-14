@@ -1,7 +1,8 @@
 <?php
 
 // Shared code
-require 'shared.php';
+require 'all_shared.php';
+require 'masterserver_shared.php';
 
 // Choose between listservers and removeserver actions
 switch ($action)
@@ -30,8 +31,7 @@ switch ($action)
 		// Set port from GET query
 		$port = $params['serverport'];
 
-		/* Remove the server.
-		ip comes from shared.php */
+		// Remove the server. ip comes from masterserver_shared.php
 		removeserver($ip, $port);
 
 		// Don't fall through to default action

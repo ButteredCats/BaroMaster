@@ -1,9 +1,10 @@
 <?php
 
 // Shared code
-require 'shared.php';
+require 'all_shared.php';
+require 'masterserver_shared.php';
 
-// Both updating and refreshing server info needs current_players, current_time, and port. ip comes from shared.php
+// Both updating and refreshing server info needs current_players, current_time, and port. ip comes from masterserver_shared.php
 
 // Set current_players from GET query
 $current_players = $params['currplayers'];
