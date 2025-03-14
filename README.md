@@ -11,7 +11,7 @@ This project aims to be a [Barotrauma Legacy](https://github.com/FakeFishGames/B
 
 The master server controls the in game server list, without it you need an outside way of discovering servers to know the IP and the port to join.
 
-While it isn't 100% faithful to the operation of the original master server I believe the changes are for the better. See [Incompatibilities](#incompatibilities) for more info.
+While it isn't 100% faithful to the operation of the original master server I believe the changes are for the better. See [Differences](#differences) for more info.
 
 ## Here to use a new Barotrauma Legacy master server?
 Edit `config.xml` inside of your Barotrauma Legacy folder and change the value of `masterserverurl` so that it looks like `masterserverurl=https://example.com` where https://example.com is your master server of choice.
