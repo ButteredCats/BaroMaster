@@ -15,7 +15,7 @@ if (filter_var($current_players, FILTER_VALIDATE_INT, array("options" => array("
 	if ($action == 'refreshserver') { http_response_code(500); }
 
 	// If this errors on an addserver action this will be sent to the console
-	echo 'Invalid current player count '.$current_players.' it needs to be between 0 and 99';
+	echo 'Invalid current player count "'.$current_players.'" it needs to be between 0 and 99';
 
 	// Quit processing
 	exit();
@@ -30,7 +30,7 @@ $port = $params['serverport'];
 if (filter_var($port, FILTER_VALIDATE_INT, array("options" => array("min_range"=>1, "max_range"=>65535))) === FALSE)
 {
 	// Send error message to Barotrauma console
-	echo 'Invalid server port '.$port.' it needs to be between 1 and 65535';
+	echo 'Invalid server port "'.$port.'" it needs to be between 1 and 65535';
 
 	// Quit processing
 	exit();
@@ -52,13 +52,13 @@ function handle_database_error_messages($error_message)
 	This is wrong from an HTTP standpoint but I'm doing it like this because it's a better user experience to get actual in game errors. */
 
 	// https://stackoverflow.com/a/4175935
-	$issue_map = array('UNIQUE constraint failed: servers.ip, servers.port'=>'Server with IP '.$ip.' and port '.$port.' already exists',
+	$issue_map = array('UNIQUE constraint failed: servers.ip, servers.port'=>'Server with IP "'.$ip.'" and port "'.$port.'" already exists',
 				'UNIQUE constraint failed: servers.name'=>'Server with the name "'.$name.'" already exists',
-				'CHECK constraint failed: port'=>'Invalid server port '.$port.' it needs to be between 1 and 65535',
-				'CHECK constraint failed: game_started'=>'Invalid game started state '.$game_started.' it needs to be either 0 or 1',
-				'CHECK constraint failed: current_players'=>'Invalid current player count '.$current_players.' it needs to be between 0 and 99',
-				'CHECK constraint failed: max_players'=>'Invalid max player number '.$max_players.' it needs to be between 1 and 99',
-				'CHECK constraint failed: password_required'=>'Invalid password requirement flag '.$password_required.' it needs to be either 0 or 1');
+				'CHECK constraint failed: port'=>'Invalid server port "'.$port.'" it needs to be between 1 and 65535',
+				'CHECK constraint failed: game_started'=>'Invalid game started state "'.$game_started.'" it needs to be either 0 or 1',
+				'CHECK constraint failed: current_players'=>'Invalid current player count "'.$current_players.'" it needs to be between 0 and 99',
+				'CHECK constraint failed: max_players'=>'Invalid max player number "'.$max_players.'" it needs to be between 1 and 99',
+				'CHECK constraint failed: password_required'=>'Invalid password requirement flag "'.$password_required.'" it needs to be either 0 or 1');
 	// Go over each issue in issue_map and if it's found in error_message print out that issue's specific error message
 	foreach ($issue_map as $to_find => $specific_error_message)
 	{
