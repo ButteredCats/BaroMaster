@@ -198,5 +198,3 @@ switch ($action)
 		// Bad request
 		http_response_code(400);
 }
-
-?>

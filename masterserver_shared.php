@@ -8,5 +8,3 @@ $ip = $_SERVER['REMOTE_ADDR'];
 
 // Set password_required from GET query
 $action = $params['action'];
-
-?>
