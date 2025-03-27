@@ -44,3 +44,18 @@ div p {
 }
 
 a { color: #24ecff6f; }
+
+
+/* Somewhat recreate the look of the in game server picker */
+td:first-child, td:nth-child(4) { text-align: right; }
+td:nth-child(3) { text-align: center; }
+th { text-align: left; }
+/* Give a gap between everything in the table to make it more readable */
+th, td { padding-right: 15px; }
+
+/* Deal with the table at smaller screen sizes.
+Doesn't let us keep the Barotraumaish look but it's better than being nonfunctional or hard to read */
+@media (max-width: 643px) {
+	th, td, td:first-child, td:nth-child(4) { text-align: center; }
+}
+#server_list { overflow-x: auto; }

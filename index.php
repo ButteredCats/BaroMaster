@@ -19,14 +19,15 @@ $server_url =  $protocol.$_SERVER['SERVER_NAME'].$port.$_SERVER['REQUEST_URI'];
 
 
 // Before going through servers delete the old ones
-delete_old_servers();
+//delete_old_servers();
 
 // Initialize current_servers and current_players
 $current_servers = 0;
 $current_players = 0;
+$server_list = '';
 
-// Select ip, port, and last_update_time from all servers in database https://www.phptutorial.net/php-pdo/php-fetchall/
-$stmt = $db->prepare('SELECT current_players FROM servers');
+// Select ip, port, name, game_started, current_players, max_players, password_required from all servers in database https://www.phptutorial.net/php-pdo/php-fetchall/
+$stmt = $db->prepare('SELECT ip, port, name, game_started, current_players, max_players, password_required FROM servers');
 $stmt->execute();
 $servers = $stmt->fetchAll();
 
@@ -35,6 +36,15 @@ foreach ($servers as $row)
 {
     $current_servers++;
     $current_players += $row['current_players'];
+    
+    /* If password is required or the game is started set then set their states to " checked" so the checkbox is checked and has a space between it and disabled.
+    If they aren't then set the state to an empty string so that box is unchecked.
+    https://www.php.net/manual/en/language.operators.comparison.php#language.operators.comparison.ternary */
+    $password_required_state = ($row['password_required'] == 1) ? ' checked' : '';
+    $game_started_state = ($row['game_started'] == 1) ? ' checked' : '';
+    
+    // PHP_EOL and \t (tab) are there to keep the HTML nicely formatted
+    $server_list .= '<tr><td><input type="checkbox" disabled'.$password_required_state.'></td><td>'.$row['name'].'</td><td>'.$row['current_players'].'/'.$row['max_players'].'</td><td>'.'<input type="checkbox" disabled'.$game_started_state.'></td><td>'.$row['ip'].':'.$row['port'].'</td></tr>'.PHP_EOL."\t";
 }
 
 ?>
@@ -53,10 +63,10 @@ foreach ($servers as $row)
     <meta content="<?=$server_url?>" property="og:url" />
 
     <!-- Preload our stylesheet -->
-    <link rel="preload" href="style.css?v=1.0.1" as="style">
+    <link rel="preload" href="style.css?v=1.1.0" as="style">
 
     <!-- Our stylesheet -->
-    <link rel="stylesheet" href="style.css?v=1.0.1">
+    <link rel="stylesheet" href="style.css?v=1.1.0">
   </head>
 
   <body>
@@ -64,6 +74,25 @@ foreach ($servers as $row)
       <h1>Barotrauma Legacy Master Server</h1>
       <div><p>The master server controls the in game server list, without it you need an outside way of discovering servers to know the IP and the port to join. To use this master server replacement and discover servers through the game, edit <strong>config.xml</strong> inside of your Barotrauma Legacy folder and change the value of "masterserverurl" so that it looks like "<strong>masterserverurl=<?=$server_url?></strong>"</p></div>
       <div><p>There are currently <?=$current_servers?> online servers that contain a total of <?=$current_players?> players.</p></div>
+      <div id="server_list">
+        <table>
+          <tr>
+            <th>Password</th>
+            <th>Name</th>
+            <th>Players</th>
+            <th>Round started</th>
+            <th>Connection info</th>
+          </tr>
+          <?php
+            /* If we have servers echo them, otherwise echo that there's none.
+            PHP_EOL and \t (tab) are there to keep the HTML nicely formatted */
+            if ($current_servers > 0) {
+              echo $server_list.'</table>'.PHP_EOL;
+            } else {
+              echo '</table>'.PHP_EOL."\t<p>Could not find any servers.</p>".PHP_EOL;
+            }
+          ?>
+      </div>
       <div><p>This master server's source code can be found at <a href="https://github.com/ButteredCats/BaroMaster" target="_blank">https://github.com/ButteredCats/BaroMaster</a></p></div>
     </main>
   </body>
