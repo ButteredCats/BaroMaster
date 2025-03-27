@@ -39,7 +39,7 @@ In a couple of places this master server implementation differs from what the Ba
 
 1. **Server names must be unique.** This is to prevent easy impersonation of another server by using the same name.
 
-2. **&, ", ', <, and > cannot be used in server names.** Because the server list can easily be made to display in the web browser this opens up the ability to make a server name with malicious code in the name that would execute upon viewing it in a browser. By not allowing server names with these characters this can be prevented.
+2. **&, ", ', <, and > cannot be used in server names.** Because the server list is displayed on the landing page this opens up the ability to make a server name with malicious code in the name that would execute upon viewing it in a browser. By not allowing server names with these characters this is prevented.
 
 3. **Leading and trailing spaces are trimmed from the name in the server list.** This is to try and enforce keeping server names unique and prevent easily bypassing it by adding a space at the beginning or end of a name.
 
