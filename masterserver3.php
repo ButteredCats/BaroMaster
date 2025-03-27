@@ -8,32 +8,40 @@ require 'masterserver_shared.php';
 
 // Set current_players from GET query
 $current_players = $params['currplayers'];
-// Check if current_players is actually a number, and if it is check if it's in our range
-if (filter_var($current_players, FILTER_VALIDATE_INT, array("options" => array("min_range"=>0, "max_range"=>99))) === FALSE)
-{
-	// Set response to generic server failure code if this is a server refresh because the refresh function needs a non 200 code to know something went wrong
-	if ($action == 'refreshserver') { http_response_code(500); }
-
-	// If this errors on an addserver action this will be sent to the console
-	echo 'Invalid current player count "'.$current_players.'" it needs to be between 0 and 99';
-
-	// Quit processing
-	exit();
-}
 
 // Get current time
 $current_time = time();
 
 // Set port from GET query
 $port = $params['serverport'];
-// Check if the port is actually a number, and if it is check if it's in our range
-if (filter_var($port, FILTER_VALIDATE_INT, array("options" => array("min_range"=>1, "max_range"=>65535))) === FALSE)
-{
-	// Send error message to Barotrauma console
-	echo 'Invalid server port "'.$port.'" it needs to be between 1 and 65535';
 
-	// Quit processing
-	exit();
+
+function check_current_players_and_port()
+{
+	global $current_players, $port;
+	
+	// Check if current_players is actually a number, and if it is check if it's in our range
+	if (filter_var($current_players, FILTER_VALIDATE_INT, array("options" => array("min_range"=>0, "max_range"=>99))) === FALSE)
+	{
+		// Set response to generic server failure code if this is a server refresh because the refresh function needs a non 200 code to know something went wrong
+		if ($action == 'refreshserver') { http_response_code(500); }
+
+		// If this errors on an addserver action this will be sent to the console
+		echo 'Invalid current player count "'.$current_players.'" it needs to be between 0 and 99';
+
+		// Quit processing
+		exit();
+	}
+	
+	// Check if the port is actually a number, and if it is check if it's in our range
+	if (filter_var($port, FILTER_VALIDATE_INT, array("options" => array("min_range"=>1, "max_range"=>65535))) === FALSE)
+	{
+		// Send error message to Barotrauma console
+		echo 'Invalid server port "'.$port.'" it needs to be between 1 and 65535';
+
+		// Quit processing
+		exit();
+	}
 }
 
 // Handle potential database error messages
@@ -78,6 +86,8 @@ switch ($action)
 		// Remove all old servers before trying to add to list
 		delete_old_servers();
 
+		// Check that current players and server port values are valid
+		check_current_players_and_port();
 
 		/* These variables are only needed on server creation.
 		trim() removes leading and trailing whitespace so you can't easily impersonate a server by using spaces to have a different name.
@@ -147,6 +157,9 @@ switch ($action)
 		break;
 	// refreshserver action to update game started state and current player count
 	case 'refreshserver':
+		// Check that current players and server port values are valid
+		check_current_players_and_port();
+
 		// Only needed when refreshing info
 		$game_started = $params['gamestarted'];
 		// Check that game_started is actually a number, and if it is check that it's either 0 or 1
