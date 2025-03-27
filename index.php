@@ -19,7 +19,7 @@ $server_url =  $protocol.$_SERVER['SERVER_NAME'].$port.$_SERVER['REQUEST_URI'];
 
 
 // Before going through servers delete the old ones
-//delete_old_servers();
+delete_old_servers();
 
 // Initialize current_servers and current_players
 $current_servers = 0;
@@ -36,13 +36,13 @@ foreach ($servers as $row)
 {
     $current_servers++;
     $current_players += $row['current_players'];
-    
+
     /* If password is required or the game is started set then set their states to " checked" so the checkbox is checked and has a space between it and disabled.
     If they aren't then set the state to an empty string so that box is unchecked.
     https://www.php.net/manual/en/language.operators.comparison.php#language.operators.comparison.ternary */
     $password_required_state = ($row['password_required'] == 1) ? ' checked' : '';
     $game_started_state = ($row['game_started'] == 1) ? ' checked' : '';
-    
+
     // PHP_EOL and \t (tab) are there to keep the HTML nicely formatted
     $server_list .= '<tr><td><input type="checkbox" disabled'.$password_required_state.'></td><td>'.$row['name'].'</td><td>'.$row['current_players'].'/'.$row['max_players'].'</td><td>'.'<input type="checkbox" disabled'.$game_started_state.'></td><td>'.$row['ip'].':'.$row['port'].'</td></tr>'.PHP_EOL."\t";
 }
