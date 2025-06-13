@@ -140,7 +140,7 @@ This request details:
 For addserver actions it's possible to have a proper error message sent to console in the event something is wrong by responding with a 200 status code and a body containing the message to be sent.
 Any other response code will result in the game showing an error that contains the response code and it's description from here https://learn.microsoft.com/en-us/windows/win32/winhttp/http-status-codes
 
-The Barotrauma client UI only allows server names up to 14 characters, and that's all that'll fit in the server name box once the server is joined. Therefore this master server implementation limits the max length of a server name to 14 characters.
+The Barotrauma client UI only allows as many characters as fit in the name box when setting up a server. However the serversettings.xml file easily allows you to set more. Therefore this master server implementation will try and mimic what the modern version of the game does and truncate names that are too long. I'm basing this value off of filling the entire in game name column with all W's, which will fit 21. After this it'll be truncated with '...'.
 The client UI allows a name that's all spaces, but in the interest of user experience when viewing the server list the master server won't allow an all spaces name and will return an error to the server when they try and do this.
 We'll also strip any leading or trailing spaces of the server name to prevent putting weird looking names or impersonating another server (since nothing seperates them at a glance except name) by adding an unseen space.
 
