@@ -103,11 +103,12 @@ switch ($action)
 			exit();
 		}
 
-		// The server name can only be up to 14 characters, mb_strlen counts the amount of characters (not the amount of bytes, so multibyte characters are counted correctly)
-		if (mb_strlen($name) > 14) {
-			// Send error message to Barotrauma console
-			echo 'Server name cannot be longer than 14 characters';
-			exit();
+		/* With 21 W characters the server name fills up all the available space in the name column in game. Another W and it runs over the other columns.
+		To combat this we limit the max characters to 21, and if it's over that then we add "..." at the end which is similar to what the modern version of the game does.
+		mb_strlen counts the amount of characters and not the amount of bytes, so multibyte characters are counted correctly */
+		if (mb_strlen($name) > 21) {
+			// 0 indexed, 20 is up to the 21st character https://www.php.net/manual/en/function.substr.php
+			$name = substr("$name", 0, 20).'...';
 		}
 
 
