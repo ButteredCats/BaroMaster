@@ -44,7 +44,7 @@ foreach ($servers as $row)
     $game_started_state = ($row['game_started'] == 1) ? ' checked' : '';
 
     // PHP_EOL and \t (tab) are there to keep the HTML nicely formatted
-    $server_list .= '<tr><td><input type="checkbox" disabled'.$password_required_state.'></td><td>'.$row['name'].'</td><td>'.$row['current_players'].'/'.$row['max_players'].'</td><td>'.'<input type="checkbox" disabled'.$game_started_state.'></td><td>'.$row['ip'].':'.$row['port'].'</td></tr>'.PHP_EOL."\t";
+    $server_list .= '<tr><td><input type="checkbox" disabled'.$password_required_state.'></td><td>'.htmlspecialchars($row['name']).'</td><td>'.$row['current_players'].'/'.$row['max_players'].'</td><td>'.'<input type="checkbox" disabled'.$game_started_state.'></td><td>'.$row['ip'].':'.$row['port'].'</td></tr>'.PHP_EOL."\t";
 }
 
 ?>

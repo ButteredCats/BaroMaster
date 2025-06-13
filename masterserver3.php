@@ -92,15 +92,7 @@ switch ($action)
 		/* These variables are only needed on server creation.
 		trim() removes leading and trailing whitespace so you can't easily impersonate a server by using spaces to have a different name.
 		Also lets us not allow all space names as checked slightly further down. */
-		$name = trim($params['servername']); //
-
-		/* htmlspecialchars() encodes &, ", ', <, and > to avoid XSS since these pages can easily be accessed in a web browser. If these stay encoded they show up weird in the server browser so we can't keep them like that.
-		If htmlspecialchars() encoded any of those characters it will no longer match the original name variable, and we should inform the user that they entered invalid characters. */
-		if ($name != htmlspecialchars($name)) {
-			// Send error message to Barotrauma console
-			echo 'Server name cannot include &, ", \', <, or >';
-			exit();
-		}
+		$name = trim($params['servername']);
 
 		/* Don't allow completely empty or all spaces names.
 		The game already disallows empty names, but all spaces are technically allowed. We're blocking them in the interest of user experience when browsing the server list.
