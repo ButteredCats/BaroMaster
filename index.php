@@ -7,15 +7,8 @@ require 'all_shared.php';
 // https://stackoverflow.com/a/37213574
 $protocol = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
 
-// If protocol is https and port is 443 OR protocol is http and port is 80 then don't specify the port, otherwise use the server port
-if ( ($protocol == 'https://' && $_SERVER['SERVER_PORT'] == 443) || ($protocol == 'http://' && $_SERVER['SERVER_PORT'] == 80) ) {
-  $port = "";
-} else {
-  $port = ':'.$_SERVER['SERVER_PORT'];
-}
-
-// Set the server URL
-$server_url =  $protocol.$_SERVER['SERVER_NAME'].$port.$_SERVER['REQUEST_URI'];
+// Set the server URL. HTTP_HOST will contain both the host and port if the port is not the default for the protocol
+$server_url =  $protocol.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
 
 // Before going through servers delete the old ones
