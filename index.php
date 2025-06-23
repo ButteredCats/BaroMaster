@@ -56,7 +56,7 @@ foreach ($servers as $row)
     <meta name="description" content="A Barotrauma Legacy Master Server replacement.">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- Discord embeds https://stackoverflow.com/questions/59335731/how-to-create-own-embed-site-for-discord -->
     <meta content="BaroMaster" property="og:title" />
     <meta content="A Barotrauma Legacy Master Server replacement." property="og:description" />
@@ -72,7 +72,7 @@ foreach ($servers as $row)
   <body>
     <main>
       <h1>Barotrauma Legacy Master Server</h1>
-      <div><p>The master server controls the in game server list, without it you need an outside way of discovering servers to know the IP and the port to join. To use this master server replacement and discover servers through the game, edit <strong>config.xml</strong> inside of your Barotrauma Legacy folder and change the value of "masterserverurl" so that it looks like "<strong>masterserverurl=<?=$server_url?></strong>"</p></div>
+      <div><p>The master server controls the in game server list, without it you need an outside way of discovering servers to know the IP and the port to join. To use this master server replacement and discover servers through the game, edit <strong>config.xml</strong> inside of your Barotrauma Legacy folder and change the value of <strong>masterserverurl</strong> so that it looks like <strong>masterserverurl=<?=$server_url?></strong></p></div>
       <div><p>There are currently <?=$current_servers?> online servers that contain a total of <?=$current_players?> players.</p></div>
       <div id="server_list">
         <table>
