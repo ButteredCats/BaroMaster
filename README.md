@@ -43,7 +43,7 @@ In a couple of places this master server implementation differs from what the Ba
 
 4. **All space server names are not allowed.** This is to prevent servers with seemingly blank names from appearing in the server list.
 
-5. **Server names are truncated after 21 characters.** serversettings.xml allows you to set a name of any length, which could lead to clipping into other columns in the server browser. Therefore this master server implementation will try and mimic what the modern version of the game does and truncate names that are too long. Names longer than this can still be submitted and the full name will still be shown when clients join the server.
+5. **Server names are truncated after 21 characters.** Dedicated servers allow you to set a name of any length, which could lead to clipping into other columns in the server browser. Therefore this master server implementation will try and mimic what the modern version of the game does and truncate names that are too long. Names longer than this can still be submitted and the full name will still be shown when clients join the server.
 
 6. **Updates will not be served via the launcher (by default).** This is to avoid licensing problems for redistributing the game. It also avoids security issues because you'd be in control of both the files being served and their expected checksums. This is just default behavior, but anyone could easily edit `versioninfo.xml` and change this. If you choose another master server please think twice before clicking that "Download" button in the launcher.
 
