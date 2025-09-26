@@ -1,4 +1,15 @@
 <?php
+// Security headers
+header('X-Content-Type-Options: nosniff');
+header("Content-Security-Policy: default-src 'none'; style-src 'self'; img-src 'self'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'");
+header('Cross-Origin-Embedder-Policy: require-corp');
+header('Cross-Origin-Opener-Policy: same-origin');
+header('Cross-Origin-Resource-Policy: same-origin');
+
+// Privacy headers
+header('Referrer-Policy: no-referrer');
+header('X-DNS-Prefetch-Control: off');
+
 
 // Shared code
 require 'all_shared.php';
@@ -37,6 +48,7 @@ foreach ($servers as $row)
     $game_started_state = ($row['game_started'] == 1) ? ' checked' : '';
 
     // PHP_EOL and \t (tab) are there to keep the HTML nicely formatted
+    // htmlspecialchars() prevents XSS
     $server_list .= '<tr><td><input type="checkbox" disabled'.$password_required_state.'></td><td>'.htmlspecialchars($row['name']).'</td><td>'.$row['current_players'].'/'.$row['max_players'].'</td><td>'.'<input type="checkbox" disabled'.$game_started_state.'></td><td>'.$row['ip'].':'.$row['port'].'</td></tr>'.PHP_EOL."\t";
 }
 
