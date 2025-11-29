@@ -1,9 +1,12 @@
+# This project has migrated to Codeberg https://codeberg.org/ButteredCats/BaroMaster
+Any future work will be done there, and this repo will be archived.
+
 # Barotrauma Legacy Master Server
 Quick links:
 - [Overview](#overview)
 - [Here to use a new Barotrauma Legacy master server?](#here-to-use-a-new-barotrauma-legacy-master-server)
 - [Hosting](#hosting)
-- [Master Server operation documentation](#master-server-operation-documentation)
+- [Master Server operation and interaction documentation](#master-server-operation-and-interaction-documentation)
 - [Differences](#differences)
 
 ## Overview
